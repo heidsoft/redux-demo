@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import Toggle from './Component';
 // import { store } from './app/store';
 // import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
@@ -29,6 +29,20 @@ class Welcome extends React.Component{
     }
 }
 
+// 事件处理
+// function ActionLink(){
+//     function handleClick(e) {
+//         e.preventDefault();
+//         console.log('The link was clicked.');
+//     }
+//
+//     //定义链接处理
+//     return (
+//         <a href="#" onClick={handleClick}>
+//             Click me
+//         </a>
+//     );
+// }
 // 函数方式构建组建
 // 组建内调用函数采用{}
 function App(props){
@@ -41,6 +55,7 @@ function App(props){
             <Welcome name="c"/>
             <Welcome name={props.title}/>
             <Clock date={new Date()}/>
+            <Toggle/>
         </div>
     )
 }
