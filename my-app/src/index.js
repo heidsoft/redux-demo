@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Toggle from './Component';
+import Toggle from './Toggle';
+import Button from '@material-ui/core/Button';
+import { DatePicker } from 'antd';
+import 'antd/dist/antd.css';
 // import { store } from './app/store';
 // import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
@@ -50,12 +53,12 @@ function App(props){
     console.log(props)
     return (
         <div>
-            <Welcome name="java"/>
-            <Welcome name="c++"/>
             <Welcome name="c"/>
             <Welcome name={props.title}/>
             <Clock date={new Date()}/>
             <Toggle/>
+            <Button variant="contained">Material-UI</Button>
+            <DatePicker></DatePicker>
         </div>
     )
 }
