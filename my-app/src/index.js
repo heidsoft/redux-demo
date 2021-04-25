@@ -5,9 +5,21 @@ import Toggle from './Toggle';
 import Button from '@material-ui/core/Button';
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
+import { configureStore } from '@reduxjs/toolkit'
 // import { store } from './app/store';
 // import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+
+// 配置store信息
+const store = configureStore({
+    reducer: null
+})
+
+// reduce 测试
+const sum = [0, 1, 2, 3].reduce(function (acc, val) {
+    return acc + val;
+}, 0);
+console.log(sum)
 
 const app_name = "jake";
 
