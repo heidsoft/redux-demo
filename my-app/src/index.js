@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Toggle from './Toggle';
 import Button from '@material-ui/core/Button';
+import {Counter} from './features/Counter'
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
-import { configureStore } from '@reduxjs/toolkit'
-// import { store } from './app/store';
-// import { Provider } from 'react-redux';
+import {store} from './app/store'
+import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
-// 配置store信息
-const store = configureStore({
-    reducer: null
-})
+console.log("存储容器")
+console.log(store)
 
 // reduce 测试
 const sum = [0, 1, 2, 3].reduce(function (acc, val) {
@@ -71,6 +69,7 @@ function App(props){
             <Toggle/>
             <Button variant="contained">Material-UI</Button>
             <DatePicker></DatePicker>
+            <Counter/>
         </div>
     )
 }
@@ -106,6 +105,21 @@ function test1(a){
     return a + 100;
 }
 console.log(test1(1000))
+
+
+// reduce为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：
+// accumulator 累计器
+// currentValue 当前值
+// currentIndex 当前索引
+// array 数组
+// 回调函数第一次执行时，accumulator 和currentValue的取值有两种情况：
+// 如果调用reduce()时提供了initialValue，accumulator取值为initialValue，
+// currentValue取数组中的第一个值；如果没有提供 initialValue，
+// 那么accumulator取数组中的第一个值，currentValue取数组中的第二个值。
+const value = [0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array){
+    return accumulator + currentValue;
+});
+console.log(value+'reduce 函数测试')
 
 class Clock extends React.Component{
     // 构造函数
@@ -189,7 +203,10 @@ console.log(app_name);
 const element = <Welcome name={app_name} age={12} book={["java","c++","python"]}/>;
 console.log(element);
 ReactDOM.render(
-    <App title="测试应用"/>,
+    // 包装状态数据
+    <Provider store={store}>
+        <App title="测试应用"/>
+    </Provider>,
     document.getElementById('root')
 );
 
